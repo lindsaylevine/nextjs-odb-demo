@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   The paths above will be generated at build time
   */
 
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
