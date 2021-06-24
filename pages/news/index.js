@@ -1,6 +1,7 @@
 import Footer from "@components/Footer";
 import styles from "../news/News.module.css";
 import Link from "next/link";
+import { server } from "../../config";
 
 export default function NewsHome({ news }) {
   return (
@@ -28,7 +29,7 @@ export default function NewsHome({ news }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/news");
+  const res = await fetch(`${server}/api/news`);
   const news = await res.json();
   return {
     props: {
