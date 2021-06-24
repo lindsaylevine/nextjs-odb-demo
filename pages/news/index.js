@@ -1,6 +1,6 @@
 import Footer from "@components/Footer";
-import styles from "../news/News.module.css";
 import Link from "next/link";
+const styles = {}
 
 export default function NewsHome({ news }) {
   return (

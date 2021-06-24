@@ -1,5 +1,10 @@
 import Footer from "@components/Footer";
+import { useRouter } from 'next/router'
 export default function NewsDetail({ news }) {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   return (
     <div>
       <main>
@@ -29,7 +34,7 @@ export async function getStaticPaths() {
   The paths above will be generated at build time
   */
 
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: true };
 }
 
 export async function getStaticProps({ params }) {
