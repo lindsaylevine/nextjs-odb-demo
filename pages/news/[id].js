@@ -1,4 +1,5 @@
 import Footer from "@components/Footer";
+import { server } from "../../config";
 export default function NewsDetail({ news }) {
   return (
     <div>
@@ -11,7 +12,7 @@ export default function NewsDetail({ news }) {
   );
 }
 export async function getStaticPaths() {
-  const res = await fetch("/api/news");
+  const res = await fetch(`${server}/api/news`);
   const newsItems = await res.json();
   const breakingNews = newsItems.filter((news) => news.tag == "breaking");
 
@@ -32,7 +33,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`/api/news/${params.id}`);
+  const res = await fetch(`${server}/api/news/${params.id}`);
   const news = await res.json();
   return { props: { news } };
 }
