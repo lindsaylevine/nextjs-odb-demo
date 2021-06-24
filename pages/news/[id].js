@@ -26,6 +26,7 @@ export async function getStaticPaths() {
     { params: { id: '2' } },
     { params: { id: '3' } }
   ]
+  The paths above will be generated at build time
   */
 
   return { paths, fallback: true };
@@ -33,7 +34,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(`${process.env.DATA}/${params.id}`);
-  // console.log(process.env.DATA`/${params.id}`);
   const news = await res.json();
   return { props: { news } };
 }
